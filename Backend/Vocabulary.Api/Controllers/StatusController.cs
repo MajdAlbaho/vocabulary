@@ -10,7 +10,7 @@ namespace Vocabulary.Api.Controllers
         [HttpGet]
         public IActionResult Get() {
             try {
-                return Ok("API is running");
+                return Ok("API is running...");
             } catch (Exception ex) {
                 return BadRequest(new { message = ex.GetBaseException().Message });
             }
