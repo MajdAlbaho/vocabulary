@@ -1,0 +1,48 @@
+name: Deploy to AKS
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  REGISTRY: ${{ secrets.REGISTRY_NAME }}.azurecr.io
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Log in to ACR
+      uses: docker/login-action@v2
+      with:
+        registry: ${{ env.REGISTRY }}
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+
+    - name: Build Angular Image
+      run: |
+        docker build -t $REGISTRY/vocabularyangular:latest ./Frontend
+        docker push $REGISTRY/vocabularyangular:latest
+
+    - name: Build API Image
+      run: |
+        docker build -t $REGISTRY/vocabularyapi:latest ./Backend
+        docker push $REGISTRY/vocabularyapi:latest
+
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Set AKS Context
+      run: |
+        az aks get-credentials --resource-group ${{ secrets.AKS_RESOURCE_GROUP }} --name ${{ secrets.AKS_CLUSTER_NAME }}
+
+    - name: Deploy to AKS
+      run: |
+        kubectl set image deployment/angular-deployment angular=$REGISTRY/vocabularyangular:latest
+        kubectl set image deployment/vocabularyapi-deployment vocabularyapi=$REGISTRY/vocabularyapi:latest
