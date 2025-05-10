@@ -1,0 +1,6 @@
+<div *ngIf="inputList.length > 0">
+    <div class="mb-3 col-md-12" *ngFor="let input of inputList">
+        <label for="{{input.value}}" class="form-label">{{input.name|translate}}</label>
+        <input class="form-control" type="text" [(ngModel)]="input.value" placeholder="{{input.name}}" />
+    </div>
+</div>

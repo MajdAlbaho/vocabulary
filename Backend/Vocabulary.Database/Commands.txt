@@ -1,0 +1,4 @@
+﻿
+-- Generate classes from database
+Scaffold-DbContext "Server=MAJD-PC;Database=Vocabulary;Trusted_Connection=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir DataAccess\Entities -f
+

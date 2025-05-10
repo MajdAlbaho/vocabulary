@@ -1,0 +1,54 @@
+<div *ngIf="forbidden" class="text-center">
+    <app-forbidden></app-forbidden>
+</div>
+
+<div class="" *ngIf="!forbidden">
+    <div class="card mt-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between">
+                <h5 class="card-header text-info">Permissions</h5>
+                <div *ngIf="rolesList.length> 0" class="col-3 mt-3 mx-2">
+                    <label for="offerControl" class="form-label">{{ "Roles" | translate }}</label>
+                    <ng-select *ngIf="rolesList.length > 0" [(ngModel)]="selectedRoleId" bindLabel="name"
+                        (change)="onSelectRole()" bindValue="name" [items]="rolesList" [multiple]="false" [clearable]="false"></ng-select>
+                </div>
+            </div>
+            <div class="scrollable-content">
+                <div class="demo-inline-spacing mt-3 mb-3">
+                    <ul class="list-group">
+
+                        <div *ngFor="let groupedClaim of groupedClaims; let i = index">
+                            <div class="form-check m-2">
+                                <input class="form-check-input" type="checkbox" [id]="i"
+                                    (click)="onGroupClaimSelected(groupedClaim)"
+                                    [checked]="(claimTypeChecked.indexOf(groupedClaim[0].claimType) !== -1)">
+                                <label class="form-check-label" for="{{i}}">
+                                    <b>{{groupedClaim[0].groupName}}</b>
+                                </label>
+                            </div>
+                            <div class="d-flex align-items-center ms-3 row">
+                                <div class="col-4" *ngFor="let claim of groupedClaim">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="{{claim.claimValue}}"
+                                            [checked]="(userClaimValues.indexOf(claim.claimValue) !== -1)"
+                                            (click)="onClaimSelected(claim)">
+                                        <label class="form-check-label" for="{{claim.claimValue}}">
+                                            {{claim.description}}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                    </ul>
+
+                </div>
+            </div>
+            <div class="mt-3 float-end">
+                <button type="submit" class="btn btn-primary me-2" (click)="save()">{{"Save"|translate}}</button>
+                <button type="reset" class="btn btn-outline-secondary"
+                    [routerLink]="['/settings/users']">{{"Cancel"|translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>

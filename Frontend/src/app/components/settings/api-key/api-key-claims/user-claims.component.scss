@@ -1,0 +1,11 @@
+.scrollable-content {
+    max-height: 420px !important;
+    /* Set a maximum height for the scrollable content */
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    /* Enable vertical scrolling for overflowing content */
+}
+
+.card-header {
+    border-bottom: none !important;
+}

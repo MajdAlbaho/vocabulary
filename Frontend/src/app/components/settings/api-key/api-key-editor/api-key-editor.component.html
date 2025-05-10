@@ -1,0 +1,28 @@
+<form class="modal-content" [formGroup]="apiKeyForm">
+    <div class="modal-header">
+        <h5 class="modal-title" id="backDropModalTitle">{{"API Key Details"|translate}}</h5>
+        <button type="button" class="btn-close" (click)="dismiss()" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <div class="mb-3 col-md-12">
+            <label for="displayName" class="form-label">{{"Display Name"|translate}}</label>
+            <input class="form-control" type="text" formControlName="displayName" placeholder="Display Name" autofocus />
+            <div *ngIf="!apiKeyForm.get('displayName')?.valid && apiKeyForm.get('displayName')?.touched" class="text-danger">
+                <small *ngIf="apiKeyForm.get('displayName')?.hasError('required')">{{ 'Display Name is required.' | translate }}</small>
+            </div>
+        </div>
+        <div class="mb-3 col-md-12">
+            <label for="expirationDate" class="form-label">{{"Expiration Date"|translate}}</label>
+            <input class="form-control" type="datetime-local" formControlName="expirationDate" placeholder="Expiration Date" />
+            <div *ngIf="apiKeyForm.get('expirationDate')?.invalid && apiKeyForm.get('expirationDate')?.touched" class="text-danger">
+                <small *ngIf="apiKeyForm.get('expirationDate')?.hasError('required')">{{ 'Expiration Date is required.' | translate }}</small>
+            </div>
+        </div>
+        <app-claims></app-claims>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" (click)="dismiss()">{{"Close"|translate}}</button>
+        <button type="button" class="btn btn-primary" [disabled]="!apiKeyForm.valid" (click)="save()">{{"Save"|translate}}</button>
+    </div>
+</form>

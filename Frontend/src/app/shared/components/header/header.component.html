@@ -1,0 +1,37 @@
+<div class="header-wrapper row m-0">
+  <div class="header-logo-wrapper col-auto p-0">
+    <div class="toggle-sidebar" (click)="sidebarToggle()">
+      <i class="status_toggle middle sidebar-toggle" data-feather="grid"> </i>
+    </div>
+    <div class="logo-header-main">
+      <a routerLink="/"><img class="img-fluid for-light img-100" src="assets/images/logo/logo2.png" alt="" /><img
+          class="img-fluid for-dark" src="assets/images/logo/logo.png" alt="" /></a>
+    </div>
+  </div>
+  <div class="left-header col horizontal-wrapper ps-0">
+    <div class="left-menu-header">
+      
+    </div>
+  </div>
+  <div class="nav-right col-6 pull-right right-header p-0">
+    <ul class="nav-menus">
+      <li></li>
+      <li></li>
+      <li class="onhover-dropdown">
+        <div class="mode" (click)="layoutToggle()" [ngClass]="dark ? 'dark-only' : ''">
+          <i class="fa" [ngClass]="dark ? 'fa-lightbulb-o' : 'fa-moon-o'"></i>
+        </div>
+      </li>
+      <li class="maximize">
+        <app-maximise></app-maximise>
+      </li>
+      <li class="language-nav" (click)="languageToggle()">
+        <app-language></app-language>
+      </li>
+      <li class="profile-nav onhover-dropdown">
+        <div class="account-user"><i data-feather="user"></i></div>
+        <app-account></app-account>
+      </li>
+    </ul>
+  </div>
+</div>

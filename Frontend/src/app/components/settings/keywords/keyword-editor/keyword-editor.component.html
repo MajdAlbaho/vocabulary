@@ -1,0 +1,32 @@
+<form class="modal-content" [formGroup]="keywordForm">
+    <div class="modal-header">
+        <h5 class="modal-title" id="backDropModalTitle">{{"Keyword Details"|translate}}</h5>
+        <button type="button" class="btn-close" (click)="dismiss()" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <div class="mb-3 col-md-12">
+            <label for="code" class="form-label">{{"Code"|translate}}</label>
+            <input class="form-control" type="text" formControlName="code" placeholder="Code" autofocus />
+            <div *ngIf="!keywordForm.get('code')?.valid && keywordForm.get('code')?.touched" class="text-danger">
+                <small *ngIf="keywordForm.get('code')?.hasError('required')">{{ 'Code is required.' | translate }}</small>
+            </div>
+        </div>
+        <div class="mb-3 col-md-12">
+            <label for="displayName" class="form-label">{{"Display Name"|translate}}</label>
+            <input class="form-control" type="text" formControlName="displayName" placeholder="Display Name" />
+            <div *ngIf="!keywordForm.get('displayName')?.valid && keywordForm.get('displayName')?.touched" class="text-danger">
+                <small *ngIf="keywordForm.get('displayName')?.hasError('required')">{{ 'Display name is required.' | translate }}</small>
+            </div>
+            <div *ngIf="!keywordForm.get('displayName')?.valid && keywordForm.get('displayName')?.touched" class="text-danger">
+                <small *ngIf="keywordForm.get('displayName')?.hasError('minlength')">{{ 'Display name must be at least 3 characters.' | translate }}</small>
+            </div>
+        </div>
+
+        <app-input-list></app-input-list>
+        
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" (click)="dismiss()">{{"Close"|translate}}</button>
+        <button type="button" class="btn btn-primary" [disabled]="!this.keywordForm.valid" (click)="save()">{{"Save"|translate}}</button>
+    </div>
+</form>

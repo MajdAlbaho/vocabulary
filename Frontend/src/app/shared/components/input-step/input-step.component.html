@@ -1,0 +1,30 @@
+<div *ngIf="inputList && inputList.length > 0">
+    <div *ngIf="currentIndex < inputList.length">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header pb-0">
+                        <div class="d-flex justify-content-between">
+                            <h2>{{current.name}} ({{current.nameDesc}})</h2>
+                            <h5>{{currentIndex + 1}} of {{inputList.length}}</h5>
+                        </div>
+
+                    </div>
+                    <div class="card-body">
+                        <input class="form-control" type="text" [(ngModel)]="current.value" required="required" [placeholder]="current.valueDesc">
+                    </div>
+
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-warning" type="button" (click)="skip()">Skip</button>
+                            <button class="btn btn-primary" type="button" [disabled]="!current.value" (click)="nextQuestion()">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

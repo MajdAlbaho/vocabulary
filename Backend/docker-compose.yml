@@ -1,0 +1,48 @@
+version: '3.4'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Admin@123
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql_data:/var/opt/mssql
+    networks:
+      - voc_private_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:1433"]
+      interval: 180s
+      retries: 3
+      start_period: 180s
+      timeout: 180s
+  vocabulary.api:
+    image: ${DOCKER_REGISTRY-}vocabularyapi
+    build:
+      context: .
+      dockerfile: Vocabulary.Api/Dockerfile
+    ports:
+      - "53874:80"
+    networks:
+      - voc_private_network
+    depends_on:
+      - sqlserver
+  angular:
+    image: ${DOCKER_REGISTRY-}vocabularyangular 
+    build:
+      context: ..\App\Angular
+      dockerfile: Dockerfile
+    ports:
+      - "4200:80"
+    networks:
+      - voc_private_network
+
+networks:
+  voc_private_network:
+    driver: bridge
+
+volumes:
+  sql_data:

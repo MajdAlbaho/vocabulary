@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.1.34" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Vocabulary.DataAccess\Vocabulary.DataAccess.csproj" />
+    <ProjectReference Include="..\Vocabulary.Model\Vocabulary.Model.csproj" />
+    <ProjectReference Include="..\Vocabulary.Security\Vocabulary.Security.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="CoffeeCode.DataBase">
+      <HintPath>..\..\References\CoffeeCode.DataBase.dll</HintPath>
+    </Reference>
+    <Reference Include="CoffeeCode.Models">
+      <HintPath>..\..\References\CoffeeCode.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="CoffeeCode.ServiceLayer">
+      <HintPath>..\..\References\CoffeeCode.ServiceLayer.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

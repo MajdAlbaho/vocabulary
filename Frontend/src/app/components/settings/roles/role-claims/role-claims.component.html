@@ -1,0 +1,17 @@
+<div *ngIf="forbidden" class="text-center">
+    <app-forbidden></app-forbidden>
+</div>
+
+<div class="" *ngIf="!forbidden">
+    <div class="card mt-3">
+        <div class="card-body">
+            <app-claims></app-claims>
+
+            <div class="mt-3 float-end">
+                <button type="submit" class="btn btn-primary me-2" (click)="save()">{{"Save"|translate}}</button>
+                <button type="reset" class="btn btn-outline-secondary"
+                    [routerLink]="['/settings/roles']">{{"Cancel"|translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>

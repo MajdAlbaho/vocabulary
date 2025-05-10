@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../public/assets/scss/app.scss";
+
+.cursor-hand {
+    cursor: pointer;
+}
+
+div.dt-container select.dt-input {
+    margin-right: 8px;
+    margin-left: 8px;
+}
+
+.dark-only div.dt-container select.dt-input option {
+    background-color: $dark-color
+}
+
+.primary-color {
+    color: $primary-color;
+}
+
+.secondary-color {
+    color: $secondary-color;
+}
+
+.success-color {
+    color: $success-color;
+}
+
+.info-color {
+    color: $info-color;
+}
+
+.warning-color {
+    color: $warning-color;
+}
+
+.danger-color {
+    color: $danger-color;
+}

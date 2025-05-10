@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Vocabulary.Database\Vocabulary.Database.csproj" />
+    <ProjectReference Include="..\Vocabulary.Security\Vocabulary.Security.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="CoffeeCode.DataBase">
+      <HintPath>..\..\References\CoffeeCode.DataBase.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
