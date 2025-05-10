@@ -26,7 +26,7 @@ jobs:
 
     - name: Build and push API image
       run: |
-        docker build -t ${{ secrets.REGISTRY_NAME }}.azurecr.io/vocabularyapi:${{ env.IMAGE_TAG }} ./API
+        docker build -t ${{ secrets.REGISTRY_NAME }}.azurecr.io/vocabularyapi:${{ env.IMAGE_TAG }} ./Backend
         docker push ${{ secrets.REGISTRY_NAME }}.azurecr.io/vocabularyapi:${{ env.IMAGE_TAG }}
 
     - name: Build and push Angular image
