@@ -19,13 +19,13 @@
 
   <ItemGroup>
     <Reference Include="CoffeeCode.DataBase">
-      <HintPath>..\..\References\CoffeeCode.DataBase.dll</HintPath>
+      <HintPath>..\References\CoffeeCode.DataBase.dll</HintPath>
     </Reference>
     <Reference Include="CoffeeCode.Models">
-      <HintPath>..\..\References\CoffeeCode.Models.dll</HintPath>
+      <HintPath>..\References\CoffeeCode.Models.dll</HintPath>
     </Reference>
     <Reference Include="CoffeeCode.ServiceLayer">
-      <HintPath>..\..\References\CoffeeCode.ServiceLayer.dll</HintPath>
+      <HintPath>..\References\CoffeeCode.ServiceLayer.dll</HintPath>
     </Reference>
   </ItemGroup>
 

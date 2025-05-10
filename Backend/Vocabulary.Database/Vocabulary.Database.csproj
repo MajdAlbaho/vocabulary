@@ -22,7 +22,7 @@
 
   <ItemGroup>
     <Reference Include="CoffeeCode.DataBase">
-      <HintPath>..\..\References\CoffeeCode.DataBase.dll</HintPath>
+      <HintPath>..\References\CoffeeCode.DataBase.dll</HintPath>
     </Reference>
   </ItemGroup>
 
