@@ -14,47 +14,6 @@ import { StartAssessmentComponent } from '../assessment/start-assessment/start-a
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent extends BaseComponent implements OnInit {
-
-
-  textToRead: string = 'Hello, this is some text that will be read aloud.';
-  voices: SpeechSynthesisVoice[] = [];
-  selectedVoice: SpeechSynthesisVoice | null = null;
-
-  // Selected language (default is English)
-  selectedLanguage: string = 'en-US'; // 'en-US' for English, 'ar-SA' for Arabic
-
-  // Function to change the language
-  changeLanguage(language: string) {
-    this.selectedLanguage = language;
-
-    // Change the text to read depending on the language
-    if (language === 'en-US') {
-      this.textToRead = 'Hello, this is some text that will be read aloud.';
-    } else if (language === 'ar-SA') {
-      this.textToRead = 'مرحبًا! هذا هو النص الذي سيتم قراءته بصوت عالٍ.';
-    }
-  }
-
-  loadVoices() {
-    const allVoices = window.speechSynthesis.getVoices();
-    this.voices = allVoices.filter(voice => voice.lang === this.selectedLanguage);
-    this.selectedVoice = this.voices.length ? this.voices[0] : null;
-    console.log(this.voices);
-
-  }
-
-
-  
-
-
-
-
-
-
-
-
-
-
   constructor(private toastr: ToastrService,
     private router: Router,
     public modalService: NgbModal,
@@ -64,7 +23,7 @@ export class DashboardComponent extends BaseComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.loadVoices();
+    
   }
 
   startTest() {

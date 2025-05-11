@@ -19,7 +19,10 @@ export class AccountComponent extends BaseComponent {
     logout() {
         this.CallApi(this.authService.logout(), (response: any) => {
             localStorage.clear();
-            this.router.navigate(['/']);
+            this.router.navigate(['/login']);
+        }, () => {
+            localStorage.clear();
+            this.router.navigate(['/login']);
         });
     }
 }

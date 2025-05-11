@@ -1,7 +1,4 @@
 import { Injectable } from '@angular/core';
-import { JwtHelperService } from '@auth0/angular-jwt';
-import { jwtDecode } from 'jwt-decode';
-import { ToastrService } from 'ngx-toastr';
 import { BaseService } from '../base.service';
 import { HttpClient } from '@angular/common/http';
 import { LocalStorageService } from '../../shared/services/localStorage.service';

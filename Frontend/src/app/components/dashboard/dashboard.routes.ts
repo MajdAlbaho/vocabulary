@@ -7,9 +7,9 @@ export default [
     path: "",
     component: DashboardComponent,
     canActivate: [RoleGuardService],
-    // data: {
-    //   expectedClaims: [{ type: 'UserType', value: 'Employee' }]
-    // }
+    data: {
+      expectedClaims: [{ type: 'Assessments', value: 'Manage', logout: true }]
+    }
   },
 ] as Routes;
 
